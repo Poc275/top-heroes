@@ -1,0 +1,20 @@
+{
+  "name": "top-heroes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/app.js",
+  "engines": {
+    "node": "6.9.5"
+  },
+  "nyc": {
+    "exclude": "config/*.js"
+  },
+  "scripts": {
+    "start": "node server/app.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "jshint .",
+    "test": "nyc mocha && karma start --single-run"
+  },
+  "author": "",
+  "license": "ISC"
+}
