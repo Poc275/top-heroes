@@ -1,0 +1,16 @@
+<input id="fileInput" type="file" class="ng-hide" aria-label="Upload image input" nv-file-select uploader="uploader" />
+<md-input-container flex class="md-block">
+    <label ng-if="side === 0">Front Image</label>
+    <label ng-if="side === 1">Rear Image</label>
+    <input type="text" ng-model="card.images[side]" aria-label="image file name" required disabled />
+    <md-progress-linear md-mode="determinate" value="{{ uploadProgress }}" ng-show="showProgress"></md-progress-linear>
+    <div class="hint" id="upload-result"></div>
+    <!-- <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+        <div ng-message="error">Require a value between 0 and 100</div>
+    </div> -->
+</md-input-container>
+<div>
+    <md-button class="md-fab md-mini md-primary" aria-label="Upload image">
+        <md-icon md-svg-src="icons/ic_file_upload_white_24px.svg"></md-icon>
+    </md-button>
+</div>

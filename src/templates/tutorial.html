@@ -1,0 +1,74 @@
+<div layout="column" layout-align="space-between center" layout-padding>
+
+    <div ng-if="stepOne" md-swipe-right="showStep(3)" md-swipe-left="showStep(2)">
+        <h3>How to play</h3>
+        <p>A game of TC is made up of 5 hands where each hand is a card from your collection.</p>
+        <p>The aim is to choose the category with the highest score to defeat your opponent and win all of their cards.</p>
+        <p>The Donald will automatically pick your 5 best cards to play.</p>
+        <p>Once the game starts you are presented with the first card.</p>
+        <tc-card card='card' ng-repeat="card in result"></tc-card>
+        <p>Decide which category you think will win. Unlike this card you won't see the scores, so choose wisely.</p>
+        <p>Flip the card over with the 
+            <md-button class="md-icon-button md-primary bio-button" aria-label="card show biography button">
+                <md-icon md-svg-src="icons/ic_info_outline_black_24px.svg"></md-icon>
+            </md-button>
+            button to read more about them to help make your choice.</p>
+        <p>When ready click a category button to play.</p>
+    </div>
+
+    <div ng-if="stepTwo" md-swipe-right="showStep(1)" md-swipe-left="showStep(3)">
+        <h3>Win, Lose, or Draw</h3>
+        <p>You then see the opponent's card name and a slider fills up to their score.</p>
+        <img class="tutorial-image" src="images/tutorial-card.jpg" alt="tutorial card" />
+        <p>The card with the highest score wins.</p>
+        <p>If you win you get your opponent's card. If you lose your opponent gets your card.</p>
+        <p>Both players keep their card in the event of a draw.</p>
+        <p>The score updates and the game moves onto the next card.</p>
+        <img src="images/tutorial-scorebar.jpg" alt="tutorial scorebar" />
+        <p>Note the circled avatar indicates whose turn it is.</p>
+        <p>The first player to win all of their opponent's cards wins the game.</p>
+    </div>
+
+    <div ng-if="stepThree" md-swipe-right="showStep(2)" md-swipe-left="showStep(1)">
+        <h3>Category Descriptions</h3>
+        <p>Each category is scored between 0 and 100 except for PPC which is unlimited.</p>
+        <dl>
+            <dt>Unpalatibility</dt>
+            <dd>How much would you enjoy having this c*nt to dinner?</dd>
+
+            <dt>Up their own arsemanship</dt>
+            <dd>How much would the c*nt like to invite themselves to dinner?</dd>
+
+            <dt>Media attention</dt>
+            <dd>How much current press coverage does the c*nt get?</dd>
+
+            <dt>Legacy</dt>
+            <dd>How long will this c*nt be remembered when they're dead?</dd>
+
+            <dt>PPC</dt>
+            <dd>How much does this c*nt have stashed in the bank? (in millions i.e. a score of 1 = 1 million)</dd>
+
+            <dt>Special ability</dt>
+            <dd>How c*untish is their special ability?</dd>
+        </dl>
+    </div>
+
+</div>
+
+<!-- breadcrumb nav -->
+<div layout="row" layout-align="center center">
+    <md-button class="md-icon-button md-primary" ng-click="showStep(1)" aria-label="show step one">
+        <md-icon ng-if="stepOne" md-svg-src="icons/ic_radio_button_checked_black_24px.svg"></md-icon>
+        <md-icon ng-if="!stepOne" md-svg-src="icons/ic_radio_button_unchecked_black_24px.svg"></md-icon>
+    </md-button>
+
+    <md-button class="md-icon-button md-primary" ng-click="showStep(2)" aria-label="show step two">
+        <md-icon ng-if="stepTwo" md-svg-src="icons/ic_radio_button_checked_black_24px.svg"></md-icon>
+        <md-icon ng-if="!stepTwo" md-svg-src="icons/ic_radio_button_unchecked_black_24px.svg"></md-icon>
+    </md-button>
+
+    <md-button class="md-icon-button md-primary" ng-click="showStep(3)" aria-label="show step three">
+        <md-icon ng-if="stepThree" md-svg-src="icons/ic_radio_button_checked_black_24px.svg"></md-icon>
+        <md-icon ng-if="!stepThree" md-svg-src="icons/ic_radio_button_unchecked_black_24px.svg"></md-icon>
+    </md-button>
+</div>

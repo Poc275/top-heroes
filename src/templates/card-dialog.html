@@ -1,0 +1,17 @@
+<md-dialog class="card-dialog" aria-label="card">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 ng-if="mdDialogData[0].collected">{{ mdDialogData[0].name }}</h2>
+            <h2 ng-if="!mdDialogData[0].collected">?</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="icons/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="card-dialog-content">
+        <tc-card ng-if="mdDialogData[0].collected" card='card' ng-repeat="card in mdDialogData"></tc-card>
+        <tc-card-not-collected ng-if="!mdDialogData[0].collected" card='card' ng-repeat="card in mdDialogData"></tc-card-not-collected>
+    </md-dialog-content>
+</md-dialog>

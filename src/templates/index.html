@@ -1,0 +1,109 @@
+<!-- mobile view -->
+<div layout="column" class="animated" ng-switch on="flipped" ng-class="{ flipInY: flipped, fadeIn: !flipped }" hide-gt-sm>
+	<md-card md-whiteframe="12">
+		<md-card-header class="grade-Gold" id="login-card-header" layout="row">
+            <!-- flipped header text shows the title 'About' -->
+            <md-card-header-text ng-switch-when="true" id="flipped-login-header-text">
+				<span class="md-title">About...</span>
+			</md-card-header-text>
+
+			<span flex></span>
+
+			<md-card-avatar>
+				<md-button class="md-icon-button md-primary" ng-click="flipped = !flipped" aria-label="card information">
+					<i ng-switch-when="false" class="material-icons info-button">info_outline</i>
+
+					<!-- if flipped show filled in info button -->
+					<i ng-switch-when="true" class="material-icons info-button">info</i>
+				</md-button>
+			</md-card-avatar>
+		</md-card-header>
+
+		<!-- default, unflipped state - show front image -->
+		<img ng-switch-when="false" ng-src="/images/th-logo.png" class="md-card-image" alt="top heroes logo" />
+
+		<!-- else if flipped show rear image -->
+		<img ng-switch-when="true" ng-src="/images/th-about.png" class="md-card-image" alt="top heroes creators" />
+
+
+		<!-- unflipped card actions - show credentials -->
+		<md-card-actions layout="column" layout-align="space-around none" ng-switch-when="false">
+			<md-button class="fb md-raised" href="/auth/facebook" aria-label="Login with Facebook">
+                <md-icon>
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </md-icon>
+                <span class="social-text">Login with Facebook</span>
+            </md-button>
+
+            <md-button class="google md-raised" href="/auth/google" aria-label="Login with Google">
+                <md-icon>
+                    <i class="fa fa-google" aria-hidden="true"></i>
+                </md-icon>
+                <span class="social-text">Login with Google</span>
+            </md-button>
+		</md-card-actions>
+
+
+		<!-- flipped - show biography -->
+		<md-card-content ng-switch-when="true">
+			<p>Disgusted with the state of the world post Brexit and Trump, your intrepid founders bring you <strong>TOP HEROES</strong>, the most
+                effective antidote to our depressing post-truth world. Your favourite heroes are assembled all in one place for you to collect and 
+                play against your fellow rational peers to remind you that although it maybe bad now, there are a handful of people out there 
+                that continue to give us hope.</p>
+
+            <p>Login and get your starter pack of cards to begin. Then compete against other players to climb the ranks, 
+                    win more cards, complete your collection, and finally discover who the top heroes actually are.</p>
+		</md-card-content>
+
+	</md-card>
+</div>
+
+
+<!-- desktop/tablet view -->
+<div layout="column" hide show-gt-sm>
+    <md-content id="desktop-content">
+        <div layout="row" id="desktop-view">
+            <div id="desktop-logo" flex>
+                <img src="/images/th-text-logo.png" alt="top heroes logo" />
+                <h1>WELCOME TO TOP HEROES</h1>
+                <div id="desktop-info">
+                    <p>Disgusted with the state of the world post Brexit and Trump, your intrepid founders bring you <strong>TOP HEROES</strong>, the most
+                        effective antidote to our depressing post-truth world. Your favourite heroes are assembled all in one place for you to collect and 
+                        play against your fellow rational peers to remind you that although it maybe bad now, there are a handful of people out there 
+                        that continue to give us hope.</p>
+
+                    <div layout="row" flex>
+                        <img src="/images/th-faces.png" alt="top heroes ambassadors" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- login buttons panel -->
+            <div id="desktop-login" class="md-whiteframe-8dp">
+                <div id="desktop-login-detail">
+                    <h2>Login</h2>
+                    <p>Login and get your starter pack of cards to begin. Then compete against other players to climb the ranks, 
+                        win more cards, complete your collection, and finally discover who the top heroes actually are.
+                    </p>
+
+                    <div layout="column">
+                        <md-button class="fb md-raised" href="/auth/facebook" aria-label="Login with Facebook">
+                            <md-icon>
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </md-icon>
+                            <span class="social-text">Login with Facebook</span>
+                        </md-button>
+
+                        <md-button class="google md-raised" href="/auth/google" aria-label="Login with Google">
+                            <md-icon>
+                                <i class="fa fa-google" aria-hidden="true"></i>
+                            </md-icon>
+                            <span class="social-text">Login with Google</span>
+                        </md-button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </md-content>
+</div>

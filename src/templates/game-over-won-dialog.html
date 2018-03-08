@@ -1,0 +1,29 @@
+<md-dialog aria-label="Game over won dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Game Over</h2>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <h2>&#x1F60E; You win!</h2>
+            <p></p>The Donald is proud, you're making America great again.</p>
+            <p>Hands: {{ stats.handsWon + stats.handsLost + stats.handsDrawn }} | Won: {{ stats.handsWon }} | Lost: {{ stats.handsLost }} | Drawn: {{ stats.handsDrawn }}</p>
+            <p>Boon: {{ stats.boon + stats.boonWon }} <small>+{{ stats.boonWon }}</small></p>
+            <div layout="row">
+                <p class="game-over-xp-label">XP: {{ stats.newXp }} <small>+{{ stats.xpWon }}</small></p>
+                <md-progress-linear class="xp-slider" md-mode="determinate" value="{{ stats.xpSliderValue }}"></md-progress-linear>
+            </div>
+            <!-- level up -->
+            <p ng-cloak ng-if="levelUp" class="animated" ng-class="{ tada: levelUp }">
+                &#x1F199; Level Up! You are now level {{ stats.level + 1 }} - {{ stats.level + 1 | levelFilter }} <small>+100 Boon | +15 XP</small>
+            </p>
+        </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+        <span flex></span>
+        <md-button ng-click="hide()">Ok</md-button>
+    </md-dialog-actions>
+</md-dialog>

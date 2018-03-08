@@ -1,0 +1,691 @@
+/*
+**********************************
+Login page
+**********************************
+*/
+iframe {
+	border: none;
+	height: 250px;
+}
+
+/* styling for iframe once logged in */
+.in-app-chat-frame {
+	height: 500px;
+	width: 100%;
+}
+
+/* set on login card header to bring image more
+* towards the top of the card */
+#login-card-header {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+/* set on login card header when flipped
+* to nicely space the title */
+#flipped-login-header-text {
+	padding-top: 8px;
+}
+
+#desktop-content {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+#desktop-view {
+	height: 100%;
+	/* background: url("/images/tc-faces.png") no-repeat 50% 100% / 350px 350px; */
+}
+
+#desktop-logo {
+	padding: 60px;
+}
+
+#desktop-logo img {
+	/* width: 200px; */
+}
+
+#desktop-logo h1 {
+	font-size: 42px;
+	font-weight: 300;
+}
+
+#desktop-info {
+	max-width: 600px;
+}
+
+#desktop-login {
+	width: 35%;
+	min-width: 35%;
+	max-width: 35%;
+	height: 100%;
+	background: #fff;
+}
+
+#desktop-login-detail {
+	padding: 60px 48px 48px;
+}
+
+/*
+**********************************
+Logo/Icon styles
+**********************************
+*/
+.tc-logo {
+	min-width: 300px;
+	min-height: 300px;
+}
+
+.tc-text-logo {
+	height: 100px;
+}
+
+
+/*
+**********************************
+Card styles
+**********************************
+*/
+.card {
+	max-width: 500px;
+}
+
+/* remove margin on info button to prevent card header from line wrapping */
+md-card-avatar {
+	margin: 0!important;
+}
+
+#front-card-image {
+	background-size: cover;
+	background-position: 50% 50%;
+	width: 100%;
+	height: 225px;
+	max-height: 225px;
+	border-radius: 2px 2px 0 0;
+}
+
+#front-card-image-not-collected {
+	background-image: url('../images/tc-text-logo.png');
+	background-size: contain;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 225px;
+	max-height: 225px;
+	border-radius: 2px 2px 0 0;
+}
+
+.card-actions {
+	margin: 0!important;
+}
+
+/* reduce category title text size to fit card on mobile */
+.card-actions p {
+	font-size: small;
+	text-align: center;
+	height: 34px;
+	margin-bottom: 6px;
+}
+
+/* reduce card title padding for mobile */
+md-card md-card-title {
+	padding: 12px 16px 0;
+}
+
+/* spread width of card header title to keep it on a single line */
+.md-title {
+	min-width: 162px;
+}
+
+/* align card header with info button */
+md-card-header-text {
+	padding-top: 6px;
+}
+
+/* shrink card content to fit on mobile */
+#special-ability-section {
+	padding-top: 0!important;
+	margin-top: 0!important;
+}
+
+md-card-content h5 {
+	margin: 16px 0;
+}
+
+md-card-content p {
+	padding-top: 0px;
+}
+
+md-card-header.grade-Bronze {
+	border-top: 3px solid rgba(205, 127, 50, 1);
+	padding: 8px;
+}
+
+md-card-header.grade-Silver {
+	border-top: 3px solid rgba(192, 192, 192, 1);
+	padding: 8px;
+}
+
+md-card-header.grade-Gold {
+	border-top: 3px solid rgba(253, 181, 21, 1);
+	padding: 8px;
+}
+
+md-card-header {
+	border-top: 3px solid rgba(128, 70, 27, 1);
+	padding-top: 8px!important;
+	padding-bottom: 8px!important;
+}
+
+/* card not collected */
+md-card-header.card-not-collected {
+	border-top: 3px solid #818181;
+	padding: 8px;
+}
+
+.play-button {
+	min-width: 50px;
+	min-height: 50px;
+	border-radius: 25px;
+}
+
+.play-button.grade-Bronze {
+	background-color: rgba(205, 127, 50, 1);
+}
+
+.play-button.grade-Silver {
+	background-color: rgba(192, 192, 192, 1);
+}
+
+.play-button.grade-Gold {
+	background-color: rgba(253, 181, 21, 1);
+}
+
+.play-button.grade-not-collected {
+	background-color: #818181;
+}
+
+.play-button {
+	background-color: rgba(128, 70, 27, 1);
+}
+
+.play-button.grade-Bronze:not([disabled]):hover {
+	background-color: rgb(150, 93, 37);
+}
+
+.play-button.grade-Silver:not([disabled]):hover {
+	background-color: rgba(158, 158, 158, 1);
+}
+
+.play-button.grade-Gold:not([disabled]):hover {
+	background-color: rgba(174, 122, 0, 1)
+}
+
+.play-button.grade-not-collected:not([disabled]):hover {
+	background-color: #ABABAB;
+}
+
+.play-button:not([disabled]):hover {
+	background-color: rgba(86, 47, 18, 1);
+}
+
+.md-headline {
+	font-weight: 700;
+}
+
+.info-button {
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+.bio-button {
+	margin: 0!important;
+	padding: 0!important;
+	height: auto!important;
+	width: auto!important;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.category-row {
+	margin: 10px 0;
+}
+
+.score-slider {
+	width: 85%;
+	margin-top: 12px;
+}
+
+.score-slider .md-container {
+	height: 25px;
+}
+
+md-progress-linear .md-container .md-bar1, md-progress-linear .md-container .md-bar2 {
+	height: 25px;
+}
+
+/* shrink spacing around opponent's card name when score is being shown */
+.opponent-card-name {
+	margin-bottom: 0;
+}
+
+
+/*
+*********************************
+ card category info overlay
+ ********************************
+ */
+ .category-info-popup {
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.7);
+	padding: 8px;
+ }
+
+ .category-info-popup div {
+	margin-top: 0;
+ }
+
+
+/*
+*********************************
+ Scorebar
+ ********************************
+ */
+#scorebar img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+}
+
+#scorebar img.turn-indicator {
+	border: 3px solid #00BCD4;
+}
+
+#score {
+	font-size: x-large;
+}
+
+#score-seperator {
+	font-weight: 100;
+}
+
+
+
+/*
+*********************************
+ Social media buttons for oAuth
+*********************************
+*/
+.fb.md-raised {
+	background-color: #3B5998;
+	padding: 6px 12px;
+}
+
+.fb.md-raised:not([disabled]):hover {
+	background-color: #2d4373;
+}
+
+.fa-facebook {
+	position: relative;
+	top: -2px;
+	left: -5px;
+	color: #fff;
+}
+
+.google.md-raised {
+	background-color: #DD4B39;
+	padding: 6px 12px;
+}
+
+.google.md-raised:not([disabled]):hover {
+	background-color: #C23321;
+}
+
+.fa-google {
+	position: relative;
+	top: -2px;
+	left: -5px;
+	color: #fff;
+}
+
+.twitter.md-raised {
+	background-color: #55ACEE;
+	padding: 6px 12px;
+	margin-bottom: 20px;
+}
+
+.twitter.md-raised:not([disabled]):hover {
+	background-color: #2795E9;
+}
+
+.fa-twitter {
+	position: relative;
+	top: -2px;
+	left: -5px;
+	color: #fff;
+}
+
+.social-text {
+	color: #fff;
+}
+
+
+/*
+*********************************
+ Home/User profile page styles
+*********************************
+*/
+#profile {
+	/*height: 200px;
+	max-height: 200px;
+	min-height: 200px;*/
+	background-color: #4FC3F7;
+}
+
+#profile-image {
+	width: 80px;
+	min-width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 24px;
+}
+
+#user-details h2 {
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+
+#user-details h4 {
+	margin-top: 0;
+}
+
+.news-card {
+	margin-bottom: 35px;
+}
+
+.news-card md-card-header {
+	border: none;
+}
+
+.profile-card {
+	margin-bottom: 35px;
+}
+
+.profile-card header,
+.achievements-card header {
+	background-color: #4FC3F7;
+	padding: 0 16px;
+}
+
+.profile-content {
+	padding: 0 16px;
+}
+
+.profile-content md-slider {
+	margin: 12px 20px;
+	width: 50%;
+}
+
+.profile-icon {
+	margin: 24px 0;
+	padding-right: 16px;
+}
+
+.profile-text {
+	margin: 26px 0;
+}
+
+.sidebar {
+	padding-top: 15px;
+}
+
+.badge {
+	margin: 10px 0;
+	padding: 10px;
+	background-color: #505050;
+	border-radius: 4px;
+	color: #fff;
+}
+
+.badge-bronze {
+	background-color: rgba(150, 93, 37, 1);
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	margin-right: 5px;
+	border-radius: 5px;
+}
+
+.xp-slider-profile {
+	margin-top: 22px;
+	margin-left: 16px;
+}
+
+.xp-slider-profile .md-container {
+	height: 25px;
+}
+
+/* .xp-slider {
+	width: 250px;
+	margin-top: 22px;
+	margin-left: 16px;
+} */
+
+.xp-slider .md-container {
+	height: 25px;
+}
+
+.emoji {
+	font-size: 200%;
+}
+
+#chatbot {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
+
+#chatbot-icon {
+	height: 35px;
+	width: 35px;
+}
+
+.menu-icon {
+	height: auto!important;
+}
+
+
+/*
+*********************************
+ Collection page styles
+*********************************
+*/
+.collection-toolbar {
+	cursor: pointer;
+}
+
+.card-dialog {
+	width: 500px;
+	max-height: 90%!important;
+}
+
+.collection-group {
+	margin-bottom: 32px;
+}
+
+.collection-item-container {
+	text-align: center;
+	width: 150px;
+}
+
+.collection-item {
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border-radius: 50px;
+	border: 2px solid #818181;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.collection-parent.ng-hide {
+	max-height: 0;
+}
+
+.collection-parent {
+	transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
+	max-height: 3500px;
+	overflow: hidden;
+}
+
+/*
+*********************************
+ Store page styles
+*********************************
+*/
+md-grid-list {
+	max-width: 1000px;
+}
+
+md-grid-tile {
+	cursor: pointer;
+}
+
+md-grid-tile.bronze {
+	background-color: rgba(205, 127, 50, 1);
+}
+
+md-grid-tile.silver {
+	background-color: rgba(192, 192, 192, 1);
+}
+
+md-grid-tile.gold {
+	background-color: rgba(253, 181, 21, 1);
+}
+
+.store-icon {
+	width: 75%!important;
+	height: auto!important;
+}
+
+/*
+*********************************
+ New pack styles
+*********************************
+*/
+#new-pack-dialog {
+	height: 100%;
+}
+
+/* make the cards the same width to keep 
+ the scroll effect nice and smooth */
+.new-card {
+	width: 500px;
+}
+
+
+/*
+*********************************
+ End of game dialog styles
+*********************************
+*/
+/* This is to vertically centre the xp slider
+ *	with the xp label */
+.game-over-xp-label {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+
+/*
+*********************************
+ Tutorial styles
+*********************************
+*/
+.tutorial-image {
+	width: 100%;
+}
+
+
+/*
+*********************************
+ CMS styles
+*********************************
+*/
+.autocomplete-custom-template li {
+  border-bottom: 1px solid #ccc;
+  height: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  white-space: normal;
+  line-height: 16px!important;
+  font-size: initial!important;
+}
+
+.autocomplete-icon {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	border: 2px solid #818181;
+	cursor: pointer;
+}
+
+.cms-form-result {
+	position: absolute;
+	left: 2px;
+	right: auto;
+	font-size: 12px;
+	line-height: 14px;
+	transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+	color: grey;
+}
+
+.hint {
+	position: absolute;
+	left: 2px;
+	right: auto;
+	bottom: 7px;
+	font-size: 12px;
+	line-height: 14px;
+	transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+	color: grey;
+}
+
+.hint.ng-hide,
+.hint.ng-enter,
+.hint.ng-leave.ng-leave-active {
+	bottom: 26px;
+	opacity: 0;
+}
+
+.hint.ng-leave,
+.hint.ng-enter.ng-enter-active {
+	bottom: 7px;
+	opacity: 1;
+}
+
+.cms-autocomplete,
+.cms-category {
+	margin-bottom: 32px;
+}
+
+.cms-preview {
+	position: relative;
+	/* give column enough height for smaller screens */
+	height: 2500px;
+}
+
+.cms-preview-card {
+	width: 500px;
+	position: fixed;
+	margin-top: 70px;
+}

@@ -1,0 +1,196 @@
+<div layout-padding>
+    <div layout="row" layout-padding layout-wrap>
+        <!-- CMS editor -->
+        <div layout="column" flex-gt-sm="55">
+            <h3 layout-padding class="md-headline">Create/Edit a card</h3>
+            <form name="cmsForm" ng-submit="cmsForm.$valid && onSubmit()" novalidate>
+                <md-autocomplete class="cms-autocomplete" 
+                    md-selected-item="selectedItem" 
+                    md-search-text="searchText" 
+                    md-selected-item-change="selectedItemChange(item)" 
+                    md-items="item in querySearch(searchText)" 
+                    md-item-text="item.value"
+                    md-min-length="0" 
+                    placeholder="Select existing..." 
+                    md-menu-class="autocomplete-custom-template">
+                    <md-item-template>
+                        <!-- <div ng-style="{'background-image':'url(https://tcmaster.blob.core.windows.net/images/{{ item.image }})'}" 
+                            class="autocomplete-icon"></div> -->
+                        <img ng-src="https://tcmaster.blob.core.windows.net/images/{{ item.image }}" class="autocomplete-icon" />
+                        <!-- ^i = highlight the name that has been found from the beginning and ignore case -->
+                        <span md-highlight-text="searchText" md-highlight-flags="i" class="autocomplete-text"> {{ item.value }}</span>
+                    </md-item-template>
+                </md-autocomplete>
+
+                <md-input-container class="md-block">
+                    <label>Name</label>
+                    <input name="name" ng-model="card.name" required />
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Name is required</div>
+                    </div>
+                </md-input-container>
+
+                <file-picker side="0" card="card" layout="row"></file-picker>
+
+                <file-picker side="1" card="card" layout="row"></file-picker>
+
+                <md-input-container class="md-block">
+                    <label>Unpalatibility</label>
+                    <input required type="number" step="any" name="unpalatibility" ng-model="card.unpalatibility" min="0" max="100" ng-change="calcAverage()" />
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Require a value between 0 and 100</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Up their own arsemanship</label>
+                    <input required type="number" step="any" name="arsemanship" ng-model="card.up_their_own_arsemanship" min="0" max="100" ng-change="calcAverage()" />
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Require a value between 0 and 100</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Media Attention</label>
+                    <input required type="number" step="any" name="media" ng-model="card.media_attention" min="0" max="100" ng-change="calcAverage()" />
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Require a value between 0 and 100</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Legacy</label>
+                    <input required type="number" step="any" name="legacy" ng-model="card.legacy" min="0" max="100" ng-change="calcAverage()" />
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Require a value between 0 and 100</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>PPC</label>
+                    <input required type="number" step="any" name="legacy" ng-model="card.ppc" min="0" />
+                    <!-- <div class="hint">In millions i.e. a score of 1 = 1 million. 200000 is current max (Putin)</div> -->
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">PPC required</div>
+                        <div ng-message="min">In millions i.e. a score of 1 = 1 million. 200000 is current max (Putin)</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Special Ability</label>
+                    <input required type="number" step="any" name="specialAbility" ng-model="card.special_ability" min="0" max="100" ng-change="calcAverage()" />
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Require a value between 0 and 100</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Special Ability Description</label>
+                    <textarea ng-model="card.special_ability_description" md-maxlength="150" rows="2" md-select-on-focus required></textarea>
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Special Ability Description is required</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Average</label>
+                    <input type="number" ng-model="average" value="50" disabled />
+                </md-input-container>
+
+                <md-input-container class="md-block cms-category">
+                    <label>Category</label>
+                    <md-select ng-model="card.category" name="category" placeholder="Category" ng-change="isTory()" required>
+                        <md-option value="World Leaders">World Leaders</md-option>
+                        <md-option value="Attention Seekers">Attention Seekers</md-option>
+                        <md-option value="Wrong'n">Wrong'n</md-option>
+                        <md-option value="Sports">Sports</md-option>
+                        <md-option value="Mouth Breathers">Mouth Breathers</md-option>
+                        <md-option value="Tories">Tories</md-option>
+                        <md-option value="Fictional">Fictional</md-option>
+                        <md-option value="1%er">1%er</md-option>
+                        <md-option value="Jokers">Jokers</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Biography</label>
+                    <textarea ng-model="card.mdBio" 
+                              ng-model-options="{ debounce: 1000 }" 
+                              ng-change="updateBioMarkdown(card.mdBio)" 
+                              name="bio" 
+                              rows="10" 
+                              required>
+                    </textarea>
+                    <div ng-messages="projectForm.rate.$error" multiple md-auto-hide="false">
+                        <div ng-message="required">Bio is required</div>
+                    </div>
+                    <div layout="row" ng-cloak>
+                        <md-button class="md-fab md-mini md-primary" title="Insert MD Link" aria-label="Insert Markdown link in Bio" 
+                                   ng-click="insertMdLink()">
+                            <md-icon md-svg-src="icons/ic_insert_link_white_24px.svg"></md-icon>
+                        </md-button>
+
+                        <md-button class="md-fab md-mini md-primary" title="Insert MD Italic Text" aria-label="Insert Markdown italics in Bio" 
+                                   ng-click="insertMdItalics()">
+                            <md-icon md-svg-src="icons/ic_format_italic_white_24px.svg"></md-icon>
+                        </md-button>
+
+                        <md-button class="md-fab md-mini md-primary" title="Insert MD Bold Text" aria-label="Insert Markdown bold text in Bio" 
+                                   ng-click="insertMdBold()">
+                            <md-icon md-svg-src="icons/ic_format_bold_white_24px.svg"></md-icon>
+                        </md-button>
+                        
+                        <md-button class="md-fab md-mini md-primary" title="Insert MD Blockquote" aria-label="Insert Markdown blockquote text in Bio" 
+                                   ng-click="insertMdBlockquote()">
+                            <md-icon md-svg-src="icons/ic_format_quote_white_24px.svg"></md-icon>
+                        </md-button>
+
+                        <!-- need ng-cloak on a speed dial so it can load closed -->
+                        <md-fab-speed-dial md-direction="right" class="md-scale">
+                            <md-fab-trigger>
+                                <md-button aria-label="Insert Markdown list in Bio" class="md-fab md-mini md-primary" title="Insert MD List">
+                                    <md-icon md-svg-src="icons/ic_list_white_24px.svg"></md-icon>
+                                </md-button>
+                            </md-fab-trigger>
+
+                            <md-fab-actions>
+                                <md-button aria-label="Insert Markdown numbered list in Bio" class="md-fab md-mini md-raised" title="Insert MD numbered list" 
+                                           ng-click="insertMdNumberedList()">
+                                    <md-icon md-svg-src="icons/ic_format_list_numbered_black_24px.svg" aria-label="Insert MD numbered list"></md-icon>
+                                </md-button>
+
+                                <md-button aria-label="Insert Markdown bullet list in Bio" class="md-fab md-raised md-mini" title="Insert MD bullet list" 
+                                           ng-click="insertMdBulletedList()">
+                                    <md-icon md-svg-src="icons/ic_format_list_bulleted_black_24px.svg" aria-label="Insert MD bullet list"></md-icon>
+                                </md-button>
+                            </md-fab-actions>
+                        </md-fab-speed-dial>
+                    </div>
+                </md-input-container>
+
+                <md-chips ng-model="card.references" name="references" md-removable="true" placeholder="References"></md-chips>
+
+                <md-input-container class="md-block">
+                    <md-button class="md-raised md-primary" type="submit">Save</md-button>
+                    <div class="cms-form-result">
+                        {{ cmsFormResponse }}
+                    </div>
+                </md-input-container>
+            </form>
+        </div>
+
+        <!-- Preview -->
+        <!-- for gt-sm show a second column that is fixed -->
+        <!-- This lets the card scroll with the form for ease of use -->
+        <div layout="column" flex-gt-sm="35" flex="100" class="cms-preview">
+            <h3 layout-padding class="md-headline">Preview</h3>
+            <tc-card card='card' ng-repeat="card in preview" class="cms-preview-card"></tc-card>
+        </div>
+
+        <!-- for < gt-sm just show the card normally -->
+        <div hide-gt-sm layout="column" flex-gt-sm="35" flex="100">
+            <!-- <h3 layout-padding class="md-headline">Preview</h3> -->
+            <tc-card card='card' ng-repeat="card in preview"></tc-card>
+        </div>
+    </div>
+</div>

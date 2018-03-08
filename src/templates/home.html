@@ -1,0 +1,217 @@
+<div>
+	<md-toolbar>
+		<div class="md-toolbar-tools">
+			<md-button class="md-accent md-icon-button" aria-label="Settings" ng-click="toggleMenu()">
+				<i class="material-icons menu-icon">menu</i>
+			</md-button>
+
+			<!-- <h2 flex md-truncate>{{ location.path() }}</h2> -->
+
+			<span flex></span>
+
+			<md-button class="md-raised md-accent" ui-sref="home.play({ email: user.email })">Play</md-button>
+		</div>
+	</md-toolbar>
+
+
+	<!-- md-component-id allows the controller to access the sidenav -->
+	<md-sidenav class="md-sidenav-left" md-component-id="side-menu" md-whiteframe="4">
+		<md-toolbar layout-padding layout="row">
+			<div class="md-toolbar-tools">
+				<h2>Main Menu</h2>
+				<span flex></span>
+				<md-button ng-click="toggleMenu()" class="md-icon-button md-accent">
+					<i class="material-icons menu-icon">close</i>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-content layout-padding>
+			<md-list flex>
+				<md-list-item class="md-3-line">
+					<img ng-src="{{ gravatarUrl(user.email, 80) }}" alt="user's gravatar" class="md-avatar" />
+					<div class="md-list-item-text" layout="column">
+						<h3>Hi {{ user.username }}</h3>
+						<h4>{{ user.name }}</h4>
+						<p>{{ user.email }}</p>
+					</div>
+				</md-list-item>
+
+				<md-divider></md-divider>
+
+				<md-list-item class="md-1-line" ui-sref="home" ng-click="toggleMenu()">
+					<i class="material-icons md-avatar menu-icon">home</i>
+					<div class="md-list-item-text" layout="column">
+						<h3>Home</h3>
+					</div>
+				</md-list-item>
+
+				<md-list-item class="md-1-line" ng-click="getCards(); toggleMenu()" ui-sref="home.collection">
+					<i class="material-icons md-avatar menu-icon">collections</i>
+					<div class="md-list-item-text" layout="column">
+						<h3>My Collection</h3>
+					</div>
+				</md-list-item>
+
+				<md-list-item class="md-1-line" ng-click="toggleMenu()" ui-sref="home.store">
+					<i class="material-icons md-avatar menu-icon">shopping_cart</i>
+					<div class="md-list-item-text" layout="column">
+						<h3>Store</h3>
+					</div>
+				</md-list-item>
+
+				<!-- CMS - Admin only -->
+				<md-list-item ng-if="user.role === 'admin'" class="md-1-line" ng-click="toggleMenu()" ui-sref="home.cms">
+					<i class="material-icons md-avatar menu-icon">edit</i>
+					<div class="md-list-item-text" layout="column">
+						<h3>CMS</h3>
+					</div>
+				</md-list-item>
+
+				<md-list-item class="md-1-line" ng-click="logout()">
+					<i class="material-icons md-avatar menu-icon">exit_to_app</i>
+					<div class="md-list-item-text" layout="column">
+						<h3>Sign out</h3>
+					</div>
+				</md-list-item>
+
+			</md-list>
+		</md-content>
+	</md-sidenav>
+
+
+	<md-content id="content" flex>
+		<div ui-view>
+			<!-- default home view -->
+			<div id="profile" layout="column" layout-align="end none" layout-padding>
+				<div id="user-info" layout="row">
+					<a href="https://en.gravatar.com/" target="_blank">
+						<img ng-src="{{ gravatarUrl(user.email, 80) }}" alt="user's gravatar" id="profile-image" />
+					</a>
+					<div id="user-details" layout="column">
+						<h2>{{ user.name }}</h2>
+						<h4>Rank: {{ user.level | levelFilter }}</h4>
+					</div>
+
+					<span class="emoji" ng-if="(user.level | levelFilter).indexOf('Bronze') > -1">&#x1F949;</span>
+					<span class="emoji" ng-if="(user.level | levelFilter).indexOf('Silver') > -1">&#x1F948;</span>
+					<span class="emoji" ng-if="(user.level | levelFilter).indexOf('Gold') > -1">&#x1F947;</span>
+					<span class="emoji" ng-if="(user.level | levelFilter).indexOf('Brown Platinum') > -1">&#x1F3C5;</span>
+					<span class="emoji" ng-if="(user.level | levelFilter).indexOf('Top') > -1">&#x1F3C6;</span>
+					
+					<!--<md-button class="md-raised md-accent" layout-align="center center" ui-sref="home.play" ng-click="init(user)">Play</md-button>-->
+				</div>
+			</div>
+
+			<div layout="row" layout-padding layout-wrap>
+				<div class="timeline" layout="column" flex-gt-sm="55">
+					<!-- <md-subheader>News Feed</md-subheader> -->
+					<!-- eventually - for each news feed in user's feed... -->
+					<md-card class="news-card">
+						<md-card-header>
+							<!-- <md-card-avatar>
+								<img src="images/th-avatar.jpg"/>
+							</md-card-avatar> -->
+							<md-card-header-text>
+								<span class="md-title">Top Heroes</span>
+								<span class="md-subhead">Today</span>
+							</md-card-header-text>
+						</md-card-header>
+						<md-divider></md-divider>					
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">Your Starter Pack is ready</span>
+							</md-card-title-text>
+						</md-card-title>
+						<md-card-content>
+							<p>Your starter pack is now ready. See them <a ng-click="getCards()" ui-sref="home.collection">here</a>.</p>
+							<p>Test their heroic credentials by <a ng-click="init(user)" ui-sref="home.play">starting a new game</a>.</p>
+						</md-card-content>
+					</md-card>
+
+					<md-card class="news-card">
+						<md-card-header>
+							<!-- <md-card-avatar>
+								<img src="images/th-avatar.jpg"/>
+							</md-card-avatar> -->
+							<md-card-header-text>
+								<span class="md-title">Top Heroes</span>
+								<span class="md-subhead">Today</span>
+							</md-card-header-text>
+						</md-card-header>
+						<md-divider></md-divider>					
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">Welcome</span>
+							</md-card-title-text>
+						</md-card-title>
+						<md-card-content>
+							<p>Welcome to Top Heroes, your antidote to the current political and social mess we find ourselves in.</p>
+							<p><a href="" ng-click="showTutorial()">Learn how to play</a> or 
+								<a ui-sref="home.store">spend</a> your starter boon in-game currency at the store to build up your collection.</p>
+						</md-card-content>
+					</md-card>
+				</div><!-- end of timeline -->
+
+				<!--<span flex></span>-->
+
+				<div class="sidebar" layout="column" flex-gt-sm="35" flex="100">
+					<div class="profile-card md-whiteframe-1dp" layout="column">
+						<header layout="row">
+							<h2>Profile</h2>
+						</header>
+
+						<div class="profile-content" layout="row">
+							<md-icon class="profile-icon" md-svg-src="icons/ic_person_black_24px.svg" aria-label="games played icon"></md-icon>
+							<p class="profile-text">Level: {{ user.level }} ({{ user.level | levelFilter }})</p>
+						</div>
+
+						<div class="profile-content" layout="row">
+							<md-icon class="profile-icon" md-svg-src="icons/ic_games_black_24px.svg" aria-label="games played icon"></md-icon>
+							<p class="profile-text">Played: {{ user.played }}</p>
+						</div>
+
+						<div class="profile-content" layout="row">
+							<md-icon class="profile-icon" md-svg-src="icons/ic_thumb_up_black_24px.svg" aria-label="games played icon"></md-icon>
+							<p class="profile-text">Won: {{ user.won }}</p>
+						</div>
+
+						<div class="profile-content" layout="row">
+							<md-icon class="profile-icon" md-svg-src="icons/ic_thumb_down_black_24px.svg" aria-label="games played icon"></md-icon>
+							<p class="profile-text">Lost: {{ user.lost }}</p>
+						</div>
+
+						<div class="profile-content" layout="row">
+							<md-icon class="profile-icon" md-svg-src="icons/ic_attach_money_black_24px.svg" aria-label="games played icon"></md-icon>
+							<p class="profile-text">Boon: {{ user.boon }}</p>
+						</div>
+
+						<div class="profile-content" layout="row">
+							<p class="profile-text">
+								XP:
+								<md-tooltip md-direction="up">{{ user.xp }}</md-tooltip>
+							</p>
+							<md-progress-linear class="xp-slider-profile" md-mode="determinate" value="{{ user.xp | xpFilter:user.level }}"></md-progress-linear>
+						</div>
+
+					</div><!-- end of profile card -->
+
+					<div class="achievements-card md-whiteframe-1dp" layout="column">
+						<header layout="row">
+							<h2>Achievements</h2>
+						</header>
+
+						<div class="profile-content" layout="row" layout-wrap>
+							<span class="badge" title="Awarded for registering">
+								<span class="badge-bronze"></span>
+								Welcome
+							</span>
+						</div>
+
+					</div><!-- end of achievements card -->
+						
+				</div><!-- end of sidebar -->
+			</div>
+		</div>
+	</md-content>
+</div>

@@ -1,0 +1,11 @@
+{
+	"expr": true,
+  	"es5": true,
+	"curly": true,
+	"eqeqeq": true,
+	"undef": true,
+	"node": true,
+	"mocha": true,
+	"jasmine": true,
+	"predef": ["angular", "CryptoJS", "browser", "element", "by", "inject", "io", "showdown", "document", "Promise"]
+}

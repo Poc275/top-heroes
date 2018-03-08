@@ -1,0 +1,19 @@
+<!-- for testing purposes only -->
+<!-- used to test different users for which oauth will not work -->
+<div layout="column">
+    <md-subheader class="md-primary">Local login for testing only</md-subheader>
+
+    <div layout="row" layout-align="center">
+        <md-input-container>
+            <label>Email</label>
+            <input ng-model="local.email" type="email">
+        </md-input-container>
+
+        <md-input-container>
+            <label>Password</label>
+            <input ng-model="local.password" type="password">
+        </md-input-container>
+    </div>
+
+    <md-button class="md-raised md-secondary" ng-click="localSignin()">Sign in</md-button>
+</div>

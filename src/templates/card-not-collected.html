@@ -1,0 +1,158 @@
+<div layout="column" class="card">
+	<md-card md-whiteframe="12">
+		<md-card-header class="card-not-collected" layout="row">
+			<md-card-header-text>
+				<span class="md-title">{{ card.category }}</span>
+			</md-card-header-text>
+
+			<span flex></span>
+
+			<md-card-avatar>
+				<md-button class="md-icon-button md-primary" ng-click="showCategoryInfo = !showCategoryInfo" aria-label="category information">
+					<md-icon ng-if="!showCategoryInfo" md-svg-src="icons/ic_expand_more_black_24px.svg" class="info-button"></md-icon>
+
+					<!-- if category shown filled in info button -->
+					<md-icon ng-if="showCategoryInfo" md-svg-src="icons/ic_expand_less_black_24px.svg" class="info-button"></md-icon>
+				</md-button>
+			</md-card-avatar>
+		</md-card-header>
+
+
+		<!-- the ng-switch on is for the category info popup -->
+		<div id="front-card-image-not-collected">
+			<div class="category-info-popup animated" ng-show="showCategoryInfo" ng-class="{ fadeInDown: showCategoryInfo, fadeOutUp: !showCategoryInfo }">
+				<!-- switch on category -->
+				<div ng-if="card.category == 'Tories'">
+					<em>Tories</em>
+					<p>A member or supporter of an homogeneous band of wealthy individuals who consider themselves as having a divine 
+						right to exert control over everbody else. <q>The best argument against democracy is a 
+						five-minute conversation with the average voter.</q><cite> - Winston Churchill</cite>
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'World Leaders'">
+					<em>World Leaders</em>
+					<p>Our intrepid leaders. Our brightest and best. Come to lead us into a brighter, more prosperous future. Not this lot. This 
+						is a collection of such despotic arseholery that you'll wish you hadn't collected them.
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'Wrong\'n'">
+					<em>Wrong'n's</em>
+					<p>This lot defies categorisation. A motley crew of bandits if ever there was one. The only place they belong is far away 
+						from civilised human beings. Be warned.
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'Fictional'">
+					<em>Fictionals</em>
+					<p>Fake arseholes! Who'd have thought we can contrive even bigger c*nts for fiction than exist in real life? Although 
+						that shouldn't be too much of a surprise given the cesspool we have to pick from.
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'Mouth Breathers'">
+					<em>Mouth Breathers</em>
+					<p>People who lack the intelligence to breathe through their nose. Their mouth agape appearance thus renders them 
+						looking pretty feckless. What's worse is the bile that then spews from this yawning chasm. Some of these fools even 
+						combine this with a drool. Which ones? We'll leave that up to you work out.
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'Attention Seekers'">
+					<em>Attention Seekers</em>
+					<p>A rag-tag selection of c*nts who either court controversy to cling on to d-rate fame, or commit heinous acts 
+						to achieve infamy. We hate them more than the Daily Mail hates liberals.
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'Sports'">
+					<em>Sports</em>
+					<p>Ah sport, the great triviality. At least have the decency to pretend you're doing it for the people. These c*nts 
+						can't even reach that mediocre target. They cheat, lie, and ridicule themselves whilst basking in the luxury 
+						of their immoral wealth.
+					</p>
+				</div>
+
+				<div ng-if="card.category == '1%er'">
+					<em>1 percenter's</em>
+					<p>Thanks to these plutocrats, we are now living in the age of austerity whilst the gap between rich and poor is 
+						greater than ever. Now you can find out who orchestrated this whole mess. You won't be surprised to hear 
+						that they are all still filthy rich and won't be needing the services of a food bank any time soon.
+					</p>
+				</div>
+
+				<div ng-if="card.category == 'Jokers'">
+					<em>Jokers</em>
+					<p>These are the special people that help us deal with the torrent of c*nts that we have to put up with. They make 
+						us realise it isn't that bad after all. As such they have the power to defeat anyone in the game. Use them wisely!
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">?</span>
+			</md-card-title-text>
+		</md-card-title>
+
+
+		<!-- show credentials, gives a glimpse of who the card could be -->
+		<md-card-actions class="card-actions">
+			<div layout="row">
+				<div layout="column" layout-align="center center" flex="33">
+					<p>Unpalatibility</p>
+					<md-button class="play-button grade-not-collected">
+						{{ card.unpalatibility }}
+					</md-button>
+				</div>
+
+				<div layout="column" layout-align="center center" flex="33">
+					<p>Up their own arsemanship</p>
+					<md-button class="play-button grade-not-collected">
+						{{ card.up_their_own_arsemanship }}
+					</md-button>
+				</div>
+
+				<div layout="column" layout-align="center center" flex="33">
+					<p>Media attention</p>
+					<md-button class="play-button grade-not-collected">
+						{{ card.media_attention }}
+					</md-button>
+				</div>
+			</div>
+
+			<div layout="row" layout-align="space-around none">
+				<div layout="column" layout-align="center center" flex="33">
+					<p>Legacy:</p>
+					<md-button class="play-button grade-not-collected">
+						{{ card.legacy }}
+					</md-button>
+				</div>
+
+				<div layout="column" layout-align="center center" flex="33">
+					<p>PPC (price per c*nt):</p>
+					<md-button class="play-button grade-not-collected">
+						{{ card.ppc }}
+					</md-button>
+				</div>
+
+				<div layout="column" layout-align="center center" flex="33">
+					<p>Special ability:</p>
+					<md-button class="play-button grade-not-collected">
+						{{ card.special_ability }}
+					</md-button>
+				</div>
+			</div>
+		</md-card-actions>
+
+		
+		<!-- default, unflipped - show special ability description -->
+		<md-card-content id="special-ability-section">
+			<h5>Special ability:</h5>
+			<p>?</p>
+		</md-card-content>
+	</md-card>
+</div>

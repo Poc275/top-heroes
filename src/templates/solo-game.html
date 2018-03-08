@@ -1,0 +1,13 @@
+<div layout="column" layout-padding>
+	<div id="scorebar" layout="row" layout-padding>
+		<img ng-src="{{ gravatarUrl(user.email, 80) }}" alt="host's gravatar" ng-class="{ 'turn-indicator': turn }" />
+		<p id="score">{{ myScore }}<span id="score-seperator"> &ndash; </span>{{ opponentScore }}</p>
+		<img src="icons/the-pinch.svg" alt="opponent's gravatar" ng-class="{ 'turn-indicator': !turn }" />
+	</div>
+
+	<div ng-cloak layout-gt-sm="row" layout="column">
+		<div flex="50" flex-gt-sm="100">
+			<tc-card card='card' ng-repeat="card in currentCard"></tc-card>
+		</div>
+	</div>
+</div>

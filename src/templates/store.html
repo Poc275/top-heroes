@@ -1,0 +1,54 @@
+<div layout-padding>
+    <h2 layout-padding class="md-headline">Store</h2>
+    <h4 layout-padding class="md-title">Balance: {{ boon }} boon</h4>
+    <p class="md-subhead">Select a pack (Each pack contains 5 cards)</p>
+
+    <md-grid-list md-cols-xs="3" md-cols-gt-xs="3" md-row-height-gt-md="1:1" md-row-height="1:1"
+        md-gutter="12px" md-gutter-gt-sm="8px">
+
+        <md-grid-tile md-ink-ripple class="bronze" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-click="purchase('bronze')">
+            <md-icon md-svg-icon="icons/paper-bag-bronze.svg" class="store-icon"></md-icon>
+            <md-grid-tile-footer>
+                <h3>{{ bronzePackPrice }} boon</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile md-ink-ripple class="silver" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-click="purchase('silver')">
+            <md-icon md-svg-icon="icons/paper-bag-silver.svg" class="store-icon"></md-icon>
+            <md-grid-tile-footer>
+                <h3>{{ silverPackPrice }} boon</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile md-ink-ripple class="gold" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-click="purchase('gold')">
+            <md-icon md-svg-icon="icons/paper-bag-gold.svg" class="store-icon"></md-icon>
+            <md-grid-tile-footer>
+                <h3>{{ goldPackPrice }} boon</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
+
+    <!-- premium? -->
+    <p class="md-subhead animated" ng-show="showPremium" ng-class="{ zoomIn: showPremium, zoomOut: !showPremium }">
+        Go Premium for more chance of getting a bad hombre?
+    </p>
+
+    <md-grid-list class="animated" md-cols="3" md-row-height="1:1" md-gutter="24px" md-gutter-gt-sm="16px" 
+      ng-show="showPremium" ng-class="{ zoomIn: showPremium, zoomOut: !showPremium }">
+      
+        <md-grid-tile md-ink-ripple class="{{ purchaseGrade }}" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-click="confirmPurchase(purchaseGrade)">
+            <md-icon md-svg-icon="{{ purchaseGradeIcon }}" class="store-icon"></md-icon>
+            <md-grid-tile-footer>
+                <h3>{{ purchasePrice }} boon</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+
+        <md-grid-tile md-ink-ripple class="{{ purchaseGrade }}" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1" ng-click="confirmPurchase(purchaseGrade + '-premium')">
+            <md-icon md-svg-icon="{{ purchasePremiumIcon }}" class="store-icon"></md-icon>
+            <md-grid-tile-footer>
+                <h3>{{ purchasePremiumPrice }} boon</h3>
+            </md-grid-tile-footer>
+        </md-grid-tile>
+    </md-grid-list>
+
+</div>

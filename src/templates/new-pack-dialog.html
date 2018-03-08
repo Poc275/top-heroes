@@ -1,0 +1,16 @@
+<md-dialog aria-label="new pack dialog" id="new-pack-dialog">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>New Pack!</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon md-svg-src="icons/ic_close_black_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <!-- show pack directive -->
+        <tc-pack cards='data.pack'></tc-pack>
+    </md-dialog-content>
+</md-dialog>

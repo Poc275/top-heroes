@@ -1,0 +1,4 @@
+--reporter spec
+--timeout 50000
+--slow 1000
+test/tests.js
