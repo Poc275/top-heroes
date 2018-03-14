@@ -11,7 +11,7 @@
     </md-toolbar>
 
     <md-dialog-content class="card-dialog-content">
-        <tc-card ng-if="mdDialogData[0].collected" card='card' ng-repeat="card in mdDialogData"></tc-card>
-        <tc-card-not-collected ng-if="!mdDialogData[0].collected" card='card' ng-repeat="card in mdDialogData"></tc-card-not-collected>
+        <th-card ng-if="mdDialogData[0].collected" card='card' ng-repeat="card in mdDialogData"></th-card>
+        <th-card-not-collected ng-if="!mdDialogData[0].collected" card='card' ng-repeat="card in mdDialogData"></th-card-not-collected>
     </md-dialog-content>
 </md-dialog>

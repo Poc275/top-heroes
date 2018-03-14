@@ -1,4 +1,4 @@
-angular.module('TCModule').directive('tcCard', function($sce) {
+angular.module('TCModule').directive('thCard', function($sce) {
 	return {
 		restrict: 'E',
 		templateUrl: '/templates/card.html',

@@ -1,4 +1,4 @@
-angular.module('TCModule').directive('tcPack', function() {
+angular.module('TCModule').directive('thPack', function() {
 	return {
 		restrict: 'E',
         templateUrl: '/templates/pack.html',

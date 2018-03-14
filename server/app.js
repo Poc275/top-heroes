@@ -30,7 +30,7 @@ var multerAzure = require('multer-azure');
 var upload = multer({
     storage: multerAzure({
         connectionString: process.env.AzureStorageKey || config.storage.connectionString,
-		container: 'images',
+		container: 'heroes',
 		blobPathResolver: function(req, file, cb) {
 			cb(null, file.originalname);
 		}
@@ -265,20 +265,20 @@ app.get('/card/pack/:size', auth, function(req, res) {
 });
 
 app.put('/card/edit', auth, isAdmin, function(req, res) {
-	Card.findById(req.body._id, function(err, card) {
+	Card.findById(mongoose.Types.ObjectId(req.body._id), function(err, card) {
 		if(err) {
-			console.log(err);
+			console.log("Couldn't find that card: ", err);
 			res.status(500).end();
 		}
 
 		card.name = req.body.name;
-		card.unpalatibility = req.body.unpalatibility;
-		card.up_their_own_arsemanship = req.body.up_their_own_arsemanship;
-		card.media_attention = req.body.media_attention;
+		card.impact = req.body.impact;
+		card.intelligence = req.body.intelligence;
 		card.legacy = req.body.legacy;
+		card.courage = req.body.courage;
 		card.special_ability = req.body.special_ability;
-		card.ppc = req.body.ppc;
-		card.cuntal_order = req.body.cuntal_order;
+		card.humility = req.body.humility;
+		card.hero_rating = req.body.hero_rating;
 		card.category = req.body.category;
 		card.special_ability_description = req.body.special_ability_description;
 		card.bio = req.body.mdBio;
@@ -287,7 +287,7 @@ app.put('/card/edit', auth, isAdmin, function(req, res) {
 
 		card.save(function(err) {
 			if(err) {
-				console.log(err);
+				console.log("Error saving the card: ", err);
 				res.status(500).end();
 			}
 			
@@ -300,13 +300,13 @@ app.post('/card/create', auth, isAdmin, function(req, res) {
 	var card = new Card();
 
 	card.name = req.body.name;
-	card.unpalatibility = req.body.unpalatibility;
-	card.up_their_own_arsemanship = req.body.up_their_own_arsemanship;
-	card.media_attention = req.body.media_attention;
+	card.impact = req.body.impact;
+	card.intelligence = req.body.intelligence;
 	card.legacy = req.body.legacy;
+	card.courage = req.body.courage;
 	card.special_ability = req.body.special_ability;
-	card.ppc = req.body.ppc;
-	card.cuntal_order = req.body.cuntal_order;
+	card.humility = req.body.humility;
+	card.hero_rating = req.body.hero_rating;
 	card.category = req.body.category;
 	card.special_ability_description = req.body.special_ability_description;
 	card.bio = req.body.mdBio;

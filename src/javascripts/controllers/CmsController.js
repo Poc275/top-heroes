@@ -1,27 +1,27 @@
 angular.module('TCModule').controller('CmsController', function($scope, $http, $sce, Cards) {
     $scope.card = {
         name: 'Harold',
-        unpalatibility: 50,
-        up_their_own_arsemanship: 50,
-        media_attention: 50,
+        impact: 50,
+        intelligence: 50,
         legacy: 50,
-        ppc: 250,
+        courage: 50,
+        humility: 50,
         special_ability: 50,
-        category: 'Mouth Breathers',
+        category: 'Fictional',
         special_ability_description: 'Special ability is...',
         mdBio: 'Bio here, markdown compatible...',
         bio: 'Bio here, markdown compatible...',
         references: [
             '[Wikipedia](https://en.wikipedia.org)'
         ],
-        cuntal_order: 'Bronze',
+        hero_rating: 'Bronze',
         images: [
             'preview-front.jpg',
             'preview-rear.jpg'
         ]
     };
 
-    // wrap card model in array for <tc-card> directive
+    // wrap card model in array for <th-card> directive
     $scope.preview = [
         $scope.card
     ];
@@ -67,24 +67,25 @@ angular.module('TCModule').controller('CmsController', function($scope, $http, $
     };
 
     $scope.calcAverage = function() {
-        $scope.average = ($scope.card.unpalatibility + 
-                         $scope.card.up_their_own_arsemanship + 
-                         $scope.card.media_attention + 
+        $scope.average = ($scope.card.impact + 
+                         $scope.card.intelligence + 
                          $scope.card.legacy + 
-                         $scope.card.special_ability) / 5;
+                         $scope.card.courage + 
+                         $scope.card.humility +
+                         $scope.card.special_ability) / 6;
 
-        $scope.isTory();
+        $scope.getCategory();
     };
 
-    $scope.isTory = function() {
-        if($scope.card.category === 'Tories') {
-            $scope.card.cuntal_order = 'Brown Platinum';
-        } else if($scope.average < 60 || !$scope.average) {
-            $scope.card.cuntal_order = 'Bronze';
+    $scope.getCategory = function() {
+        if($scope.average < 60 || !$scope.average) {
+            $scope.card.hero_rating = 'Bronze';
         } else if($scope.average < 75) {
-            $scope.card.cuntal_order = 'Silver';
+            $scope.card.hero_rating = 'Silver';
+        } else if($scope.average < 85) {
+            $scope.card.hero_rating = 'Gold';
         } else {
-            $scope.card.cuntal_order = 'Gold';
+            $scope.card.hero_rating = 'Platinum';
         }
     };
 
